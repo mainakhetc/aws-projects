@@ -1,0 +1,44 @@
+# Simple Web Server on AWS (Ubuntu 22.04)
+
+## 📌 Project Overview
+This project demonstrates how to provision an **Ubuntu 22.04 EC2 instance** in AWS, configure it as a simple **web server**, and host a basic HTML page.  
+It is intended as an **introductory AWS portfolio project** to showcase EC2 setup, security groups, and server configuration.
+
+---
+
+## 🏗️ Architecture
+![architecture](docs/architecture.png)
+
+- **AWS EC2 (Ubuntu 22.04 LTS)** – Virtual machine hosting the web server  
+- **Security Group** – Allows inbound HTTP (80) + SSH (22)  
+- **Apache Web Server** – Serves static HTML content  
+- **Browser** – Access website via EC2 public IP  
+
+---
+
+## ⚙️ Steps to Reproduce
+
+### 1. Launch EC2 Instance
+- Go to **AWS Console → EC2 → Launch Instance**
+- Name: `ubuntu-web-server`
+- AMI: **Ubuntu Server 22.04 LTS (x86_64)**
+- Instance type: `t2.micro` (free tier eligible)
+- Key pair: Create/download a `.pem` file
+- Security Group:
+  - Allow **SSH (22)** from your IP
+  - Allow **HTTP (80)** from `0.0.0.0/0`
+
+Click **Launch**.
+
+---
+
+### 2. Connect to Instance
+From your terminal (replace `KEY.pem` and `PUBLIC_IP`):
+```bash
+chmod 400 KEY.pem
+ssh -i KEY.pem ubuntu@PUBLIC_IP
+
+### 3. Update Packages
+sudo apt update && sudo apt upgrade -y
+
+### 4. Install Apache Web Server

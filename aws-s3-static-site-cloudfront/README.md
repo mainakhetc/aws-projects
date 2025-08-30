@@ -6,8 +6,11 @@ Project: Static Website Hosting on S3 with CloudFront
 Objective: Host a personal portfolio or blog as a static website using AWS S3 and CloudFront (both free tier eligible for limited usage). No optional services with charges will be included.
 
 Step 1: Create an S3 Bucket
+
 Go to S3 service.
+
 Click Create bucket.
+
 Enter a globally unique bucket name (e.g.,  mb-static-site-08302025).
 Uncheck “Block all public access” (we need the website to be public). AWS will warn you—acknowledge it.
 Click Create bucket.
